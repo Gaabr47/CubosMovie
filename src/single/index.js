@@ -1,4 +1,4 @@
-import axios from "axios"
+
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import api from "../api/api"
@@ -9,7 +9,9 @@ export default function Single() {
   const { id } = useParams()
   const [singlePost, setSinglePost] = useState('')
 
-  useEffect(() => {
+
+
+  useEffect(()=>{
     async function impressSinglePost() {
       const response = {
         single: await api.get(`/${id}?api_key=fe23e2883b46907fcadb189b39420b26&language=pt-BR`)
@@ -19,8 +21,7 @@ export default function Single() {
     }
 
     impressSinglePost()
-
-  }, [])
+  },[])
 
   const percentPosts = singlePost.vote_average * 10
 
@@ -67,10 +68,10 @@ export default function Single() {
             <div className="categoria">
               {singlePost.genres === undefined ? 'carregando' :
                 <ul>
-                  {singlePost.genres.map((dados) => {
+                  {singlePost.genres.map((dados,index) => {
                     return (
 
-                      <li>{dados.name}</li>
+                      <li key={index}>{dados.name}</li>
 
                     )
 
@@ -81,8 +82,8 @@ export default function Single() {
           </span>
           <span>
       
-            <div className="trailer">         <a href={`https://www.youtube.com/results?search_query=trailer ${singlePost.title}`} target='_blank'><b>Trailer</b></a></div>
-            <img src={`https://image.tmdb.org/t/p/original/${singlePost.poster_path}`} />
+            <div className="trailer">         <a href={`https://www.youtube.com/results?search_query=trailer ${singlePost.title}`} rel="noreferrer" target="_blank"><b>Trailer</b></a></div>
+            <img alt="poster" src={`https://image.tmdb.org/t/p/original/${singlePost.poster_path}`} />
             <br/>
             <div className="percentPost">{percentPosts}%</div>
           </span>

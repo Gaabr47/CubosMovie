@@ -2,7 +2,7 @@
 import './style.css'
 import Postagens from '../components/posts'
 import './style.css'
-import { useState } from 'react'
+
 import Busca from '../components/busca'
 import { useContext } from 'react/cjs/react.development'
 import { Link, useParams } from 'react-router-dom'
@@ -31,12 +31,12 @@ export default function PageNavigation() {
 
 <div className="navigation">
                 <ul>
-                    {arrayNavigation.map((item) => {
+                    {arrayNavigation.map((item,index) => {
                         return (
 
 
 
-                            <li onClick={() => window.scrollTo(0, 0)}><Link to={`/page/${item}`}>{item == id ? <div className="Active">{item}</div> : item}</Link></li>
+                            <li key={index} onClick={() => window.scrollTo(0, 0)}><Link to={`/page/${item}`}>{item === id ? <div className="Active">{item}</div> : item}</Link></li>
 
                         )
                     })}

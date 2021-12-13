@@ -8,7 +8,7 @@ import './style.css'
 export default function Postagens() {
     const [postList, setPostList] = useState([])
     const [generos, setGeneros] = useState([])
-    const { setNavigation, teste,buscaOn,setBuscaOn } = useContext(PostContext)
+    const { setNavigation,  } = useContext(PostContext)
     const [paginacao, setPaginacao] = useState('')
     const { id } = useParams()
 
@@ -49,11 +49,11 @@ export default function Postagens() {
         <article>
   
 
-            {postList.slice(paginacao,paginacao+5).map((item) => {
+            {postList.slice(paginacao,paginacao+5).map((item,index) => {
                 const percentPosts = item.vote_average * 10
 
                 return (
-                    <section>
+                    <section key={index}>
 
                         <div className="content_post">
                             <div className="titulo"> <span className="porcentagem" style={{ padding: 20, borderRadius: '70%' }}>{percentPosts}%</span><h1><a href={`/${item.id}`}>{item.title}</a></h1>
@@ -70,16 +70,16 @@ export default function Postagens() {
                                 {item.genre_ids === undefined ? console.log('undefined') :
                                     <div className="categoria">
                                         {
-                                            item.genre_ids.map((ids) => {
+                                            item.genre_ids.map((ids,index) => {
 
                                                 return (
-                                                    <ul>
+                                                    <ul key={index}>
 
-                                                        {generos.map((items) => {
+                                                        {generos.map((items,index) => {
                                                             return (
-                                                                <>
+                                                                <div key={index}>
                                                                     {items.id === ids ? <li>{items.name}</li> : <div style={{ display: 'none' }}></div>}
-                                                                </>
+                                                                </div>
                                                             )
                                                         })}
                                                     </ul>
@@ -92,7 +92,7 @@ export default function Postagens() {
                             </div>
                         </div>
                         <span>
-                            <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} />
+                            <img  alt="poster" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} />
                         </span>
                     </section>
                 )

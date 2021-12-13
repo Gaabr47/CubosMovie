@@ -2,7 +2,7 @@
 
 import Postagens from '../components/posts'
 import './style.css'
-import { useState } from 'react'
+
 import Busca from '../components/busca'
 import { useContext } from 'react/cjs/react.development'
 import { Link, useParams } from 'react-router-dom'
@@ -26,12 +26,12 @@ export default function Home() {
             }
             <div className="navigation">
                 <ul>
-                    {arrayNavigation.map((item) => {
+                    {arrayNavigation.map((item,index) => {
                         return (
 
 <div>   
 
-                            <li><Link to={`/page/${item}`}>{item === id ? 'Igual' : item }{id}</Link></li>
+                            <li key={index}><Link to={`/page/${item}`}>{item === id ? 'Igual' : item }{id}</Link></li>
                             </div>
                         )
                     })}

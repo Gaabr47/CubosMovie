@@ -1,5 +1,5 @@
 import { createContext, useState } from "react"
-import { useParams } from "react-router-dom"
+
 export const PostContext = createContext()
 
 export default function PostProvider({ children }) {

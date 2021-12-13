@@ -1,4 +1,4 @@
-import { Route,useParams } from "react-router-dom"
+import { Route } from "react-router-dom"
 import { Switch } from "react-router";
 import Home from "../home"
 import Single from "../single"
@@ -7,7 +7,7 @@ import PageNavigation from "../navigation";
 
 
 export default function Routes() {
-    const { id } = useParams()
+ 
     return (
         <div>
             <Nav />
