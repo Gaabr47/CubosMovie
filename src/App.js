@@ -10,9 +10,9 @@ function App() {
 
     
       <BrowserRouter>
-      <PostProvider>
+
         <Routes />
-        </PostProvider>
+      
       </BrowserRouter>
     
 
