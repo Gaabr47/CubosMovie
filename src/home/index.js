@@ -4,7 +4,7 @@ import Postagens from '../components/posts'
 import './style.css'
 
 import Busca from '../components/busca'
-import { useContext } from 'react/cjs/react.development'
+import { useState, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import { PostContext } from '../context/index'
 export default function Home() {
