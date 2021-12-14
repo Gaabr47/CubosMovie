@@ -24,5 +24,5 @@ Mude o "Build command" para CI= npm run build e faça o deploy da aplicação.
 
 ### Link da aplicação Online 
 
-https://peaceful-mclean-e78f50.netlify.app/
+https://cubosmoviedev.netlify.app/
 
