@@ -19,11 +19,7 @@ export default function Home() {
                     <input onChange={(e) => setBuscaOn(e.target.value)} type="search" placeholder='Busque um filme por nome ou ano...' />
                 </form>
             </div>
-            {buscaOn === '' ?
-                <Postagens />
-                :
-                <Busca />
-            }
+           
             <div className="navigation">
                 <ul>
                     {arrayNavigation.map((item,index) => {

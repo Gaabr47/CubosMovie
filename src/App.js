@@ -8,11 +8,13 @@ import Routes from "./Routes";
 function App() {
   return (  
 
-    <PostProvider>
+    
       <BrowserRouter>
+      <PostProvider>
         <Routes />
+        </PostProvider>
       </BrowserRouter>
-    </PostProvider>
+    
 
   );
 }

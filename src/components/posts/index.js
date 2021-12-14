@@ -8,7 +8,7 @@ import './style.css'
 export default function Postagens() {
     const [postList, setPostList] = useState([])
     const [generos, setGeneros] = useState([])
-    const { setNavigation,  } = useContext(PostContext)
+   const{setNavigation} = useContext(PostContext)
     const [paginacao, setPaginacao] = useState('')
     const { id } = useParams()
 
