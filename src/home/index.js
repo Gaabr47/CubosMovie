@@ -21,7 +21,7 @@ export default function Home() {
             </div>
             {buscaOn === '' ?
                 
-                <Postagens />
+               '123'
                 :
                 <Busca />
             }
