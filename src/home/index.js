@@ -20,7 +20,7 @@ export default function Home() {
     useEffect(() => {
         async function listMovies() {
             const response = {
-                principal: await api.get('/popular?api_key=fe23e2883b46907fcadb189b39420b26&language=pt-br&page=1),
+                principal: await api.get('/popular?api_key=fe23e2883b46907fcadb189b39420b26&language=pt-br&page=1'),
                 generos: await api.get('https://api.themoviedb.org/3/genre/movie/list?api_key=fe23e2883b46907fcadb189b39420b26&language=pt-br')
             }
 
