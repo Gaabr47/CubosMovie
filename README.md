@@ -11,7 +11,7 @@ ReactJS
 
 React router dom
 React icons
-
+Axios
 ### Base de dados
 
 ThemovieDB
