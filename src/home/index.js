@@ -1,9 +1,8 @@
 
 
-import Postagens from '../components/posts'
 import './style.css'
 import api from '../api/api';
-import Busca from '../components/busca'
+
 import { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import { PostContext } from '../context/index'
@@ -11,9 +10,10 @@ export default function Home() {
     const { id } = useParams()
     const { buscaOn, setBuscaOn, arrayNavigation } = useContext(PostContext)
     const [postList, setPostList] = useState([])
+    const [busca, setBuscaList] = useState([])
     const [generos, setGeneros] = useState([])
     const [paginacao, setPaginacao] = useState('')
-    const { setNavigation } = useContext(PostContext)
+ 
 
 
 
@@ -28,7 +28,16 @@ export default function Home() {
 
             setPostList(response.principal.data.results)
 
-
+            function filtrar(filtro) {
+                
+                return (filtro.title.toLowerCase().includes(buscaOn) || filtro.release_date.includes(buscaOn)  )
+                  
+                    
+ 
+             }
+ 
+             
+             setBuscaList(response.principal.data.results.filter((filtrar)))
 
         }
 
@@ -42,11 +51,11 @@ export default function Home() {
         listMovies()
 
 
-    }, [id])
+    }, [id,buscaOn])
 
 
 
-    setNavigation(postList.length)
+
 
 
 
@@ -113,7 +122,66 @@ export default function Home() {
             }
                 </article>
                 :
-                <Busca />
+                <article>
+            
+                {busca.length !== 0 ? 
+        
+                <>
+                {busca.slice(paginacao,paginacao +5).map((item,index) => {
+               
+                    const percentPosts = item.vote_average * 10
+                  
+                    return (
+                        <section key={index}>
+                            
+                            <div className="content_post">
+                                <div className="titulo"> <span className="porcentagem" style={{ padding: 20, borderRadius: '70%' }}>{percentPosts}%</span><h1><a href={`/${item.id}`}>{item.title}</a></h1>
+        
+                                </div>
+        
+                                <div className="center_content_post">
+                                    <div style={{ marginLeft: '8%' }}> {item.release_date}</div>
+                                    <br />
+        
+                                    {item.overview}
+        
+        
+                                    {item.genre_ids === undefined ? console.log('undefined') :
+                                        <div className="categoria">
+                                            {
+                                                item.genre_ids.map((ids,index) => {
+        
+                                                    return (
+                                                        <ul key={index}>
+        
+                                                            {generos.map((items,index) => {
+                                                               
+                                                                return (
+                                                                    <div key={index}>
+                                                                        {items.id === ids ? <li>{items.name}</li> : <div style={{display:'none'}}></div>}
+                                                                    </div>
+                                                                )
+                                                            })}
+                                                        </ul>
+                                                    )
+        
+                                                })
+                                            }</div>
+                                    }
+        
+                                </div>
+                            </div>
+                            <span>
+                                <img alt="poster" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} />
+                            </span>
+                        </section>
+                    )
+        
+        
+                })}
+                   </>
+                : <div className="notFound">Nenhum filme encontrado </div>}
+            </article >
             }
 
             <div className="navigation">

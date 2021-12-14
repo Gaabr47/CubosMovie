@@ -5,7 +5,7 @@ export const PostContext = createContext({})
 export default function PostProvider({ children }) {
    
     const [buscaOn, setBuscaOn] = useState('')
-    const [navigation, setNavigation] = useState('')
+    const navigation = 20;
 
     const arrayNavigation = [];
     const navigationSize = navigation / 5;
@@ -15,7 +15,7 @@ export default function PostProvider({ children }) {
 
 
     return (
-        <PostContext.Provider value={{ buscaOn, setBuscaOn, setNavigation,arrayNavigation }}>
+        <PostContext.Provider value={{ buscaOn, setBuscaOn,arrayNavigation }}>
             {children}
         </PostContext.Provider>
     )
